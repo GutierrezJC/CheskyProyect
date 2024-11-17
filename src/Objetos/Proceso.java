@@ -13,20 +13,23 @@ public class Proceso {
     private int idProceso;
     private String nombre;  // falta
     private int tamañoEnBytes;
-    private int cantidadPaginas;  
-   
+    private int cantidadPaginas;
+
     private int tiempoInicio;
     private int tiempoFinalizacion;
     private int tiempoLlegada;
     private int tiempoRafaga;
     private int tiempoRestante;
-    private String estado;  
+    private String estado;
     private int prioridad;
+
+    ArrayList<Integer> puntosFinales = new ArrayList<>();
+    ArrayList<Integer> puntosInicio = new ArrayList<>();
 
     private TablaPaginas tablaPaginas;   // Referencia a la tabla de páginas para este proceso
 
     // Constructor
-    public Proceso(int idProceso, String nombre, int tamañoEnBytes, int tamañoPagina, int tiempoLlegada, int tiempoRafaga, int prioridad,int maxMarcos) {
+    public Proceso(int idProceso, String nombre, int tamañoEnBytes, int tamañoPagina, int tiempoLlegada, int tiempoRafaga, int prioridad, int maxMarcos) {
         this.idProceso = idProceso;
         this.nombre = nombre;
         this.tamañoEnBytes = tamañoEnBytes;
@@ -36,12 +39,11 @@ public class Proceso {
         this.tiempoRestante = tiempoRafaga;
         this.prioridad = prioridad;
         this.estado = "Listo";           // TablaPaginas(int idTabla, int maxPaginas,int maxMarcos, )
-        this.tablaPaginas = new TablaPaginas(idProceso, cantidadPaginas,maxMarcos );
+        this.tablaPaginas = new TablaPaginas(idProceso, cantidadPaginas, maxMarcos);
 
         generarPaginas();
     }
 
-    
     private void generarPaginas() {
         Random random = new Random();
         for (int i = 1; i <= cantidadPaginas; i++) {
@@ -114,6 +116,22 @@ public class Proceso {
 
     public TablaPaginas getTablaPaginas() {
         return tablaPaginas;
+    }
+
+    public ArrayList<Integer> getPuntosFinales() {
+        return puntosFinales;
+    }
+
+    public void setPuntosFinales(ArrayList<Integer> puntosFinales) {
+        this.puntosFinales = puntosFinales;
+    }
+
+    public ArrayList<Integer> getPuntosInicio() {
+        return puntosInicio;
+    }
+
+    public void setPuntosInicio(ArrayList<Integer> puntosInicio) {
+        this.puntosInicio = puntosInicio;
     }
 
     @Override

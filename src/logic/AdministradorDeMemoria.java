@@ -65,7 +65,8 @@ public class AdministradorDeMemoria {
                 
                 if (paginacionXsegmentacion) {
                     cargarPaginacion(procesos);
-                    
+                    roundrobin.setPaginacionXsegmentacion(paginacionXsegmentacion);
+                    roundrobin.setIdalgoritmosRemplazo(idalgoritmosRemplazo);                    
                     roundrobin.ejecutar(procesos);
                 } else {
                     
