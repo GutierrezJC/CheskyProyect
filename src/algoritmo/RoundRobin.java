@@ -46,19 +46,26 @@ public class RoundRobin {
     private class ejecutarRoundR extends SwingWorker<Void, Proceso> {
 
         private List<Proceso> procesos;
-        private Queue<Proceso> cola;
+        private Queue<Proceso> colaProcecos;
         ArrayList<Proceso> listaunicos;
+        int contador = 0;
 
         public ejecutarRoundR(List<Proceso> procesos) {
             this.procesos = procesos;
-            this.cola = new LinkedList<>(procesos);
+            this.colaProcecos = new LinkedList<>(procesos);
             this.listaunicos = new ArrayList<>();
         }
 
         @Override
         protected Void doInBackground() throws Exception {
-            while (!cola.isEmpty()) {
-                Proceso proceso = cola.poll();
+            while (!colaProcecos.isEmpty()) {
+                Proceso proceso = colaProcecos.poll();
+
+                FIFO fifo = new FIFO(5, proceso.getTablaPaginas());
+                LRU lru = new LRU(5, proceso.getTablaPaginas());
+                ArrayList<Integer> futurasReferencias = obtenerFuturasReferencias(proceso);
+                OPT opt = new OPT(5, proceso.getTablaPaginas(), futurasReferencias);
+
                 if (!listaunicos.contains(proceso)) {
                     listaunicos.add(proceso);
                     ArrayList<Integer> puntosInicio = calcularPuntosInicio(proceso.getCantidadPaginas(), proceso.getTiempoRafaga(), quantum);
@@ -66,31 +73,96 @@ public class RoundRobin {
 
                     proceso.setPuntosFinales(puntosFinales);
                     proceso.setPuntosInicio(puntosInicio);
+                } else {
+                    fifo = proceso.getUnico();
+                }
+
+                if (paginacionXsegmentacion && idalgoritmosRemplazo == 1) {
+
+                    if (proceso.getTiempoRestante() >= quantum) {
+                        proceso.setTiempoRestante(proceso.getTiempoRestante() - quantum);
+
+                        int puntoinicio = proceso.getPuntosInicio().get(0);
+                        int puntofinal = proceso.getPuntosFinales().get(0);
+
+                        for (int i = puntoinicio; i <= puntofinal; i++) {
+                            Pagina pagina = proceso.getTablaPaginas().getPaginas().get(i);
+
+                            fifo.accederPagina(pagina, "C:\\memoriavirtual\\" + pagina.getNombreArchivo());
+                        }
+
+                        proceso.getPuntosInicio().remove(0);
+                        proceso.getPuntosFinales().remove(0);
+                        publish(proceso);
+                        cpu();
+
+                        if (!listaunicos.contains(proceso)) {
+                        } else {
+                            proceso.setUnico(fifo);
+                        }
+                        if (proceso.getTiempoRestante() != 0) {
+                            colaProcecos.offer(proceso);
+                        }
+
+                    } else {
+
+                        publish(proceso);
+                        proceso.setTiempoRestante(0); // Proceso terminado
+                        //                    System.out.println(proceso.getIdProceso() + " ha terminado.");
+                        cpu();
+
+                    }
 
                 }
 
-                FIFO fifo = new FIFO(proceso.getTablaPaginas().getMaxMarcos(), proceso.getTablaPaginas());
-                LRU lru = new LRU(5, proceso.getTablaPaginas());
-                ArrayList<Integer> futurasReferencias = obtenerFuturasReferencias(proceso);
-                OPT opt = new OPT(5, proceso.getTablaPaginas(), futurasReferencias);
+                if (paginacionXsegmentacion && idalgoritmosRemplazo == 2) {
 
-                if (paginacionXsegmentacion & idalgoritmosRemplazo == 1) {
+                    if (proceso.getTiempoRestante() >= quantum) {
+                        proceso.setTiempoRestante(proceso.getTiempoRestante() - quantum);
+
+                        int puntoinicio = proceso.getPuntosInicio().get(0);
+                        int puntofinal = proceso.getPuntosFinales().get(0);
+
+                        for (int i = puntoinicio; i <= puntofinal; i++) {
+                            Pagina pagina = proceso.getTablaPaginas().getPaginas().get(i);
+                            lru.referenciarPagina(pagina, "C:\\memoriavirtual\\" + pagina.getNombreArchivo());
+                        }
+                        proceso.getPuntosInicio().remove(0);
+                        proceso.getPuntosFinales().remove(0);
+                        publish(proceso);
+
+                        cpu();
+                        if (proceso.getTiempoRestante() != 0) {
+                            colaProcecos.offer(proceso);
+                        }
+
+                        // Volver a la colaProcecos si no ha terminado
+                    } else {
+
+                        publish(proceso);
+                        proceso.setTiempoRestante(0); // Proceso terminado
+                        //                    System.out.println(proceso.getIdProceso() + " ha terminado.");
+                        cpu();
+                    }
+                }
+
+                if (paginacionXsegmentacion && idalgoritmosRemplazo == 3) {
 
                     if (proceso.getTiempoRestante() > quantum) {
                         proceso.setTiempoRestante(proceso.getTiempoRestante() - quantum);
 
                         int puntoinicio = proceso.getPuntosInicio().get(0);
                         int puntofinal = proceso.getPuntosFinales().get(0);
-                        System.out.println(" | CLASE ROUNDROBIN | METODO DOINBACKGRAUD  INICIO" + puntoinicio + " " + puntofinal);
+
                         for (int i = puntoinicio; i <= puntofinal; i++) {
                             Pagina pagina = proceso.getTablaPaginas().getPaginas().get(i);
-                            fifo.accederPagina(pagina, "C:\\memoriavirtual\\" + pagina.getNombreArchivo());
+                            opt.referenciarPagina(pagina, "C:\\memoriavirtual\\" + pagina.getNombreArchivo());
                         }
                         proceso.getPuntosInicio().remove(0);
                         proceso.getPuntosFinales().remove(0);
                         publish(proceso);
                         cpu();
-                        cola.offer(proceso); // Volver a la cola si no ha terminado
+                        colaProcecos.offer(proceso); // Volver a la colaProcecos si no ha terminado
                     } else {
 
                         publish(proceso);

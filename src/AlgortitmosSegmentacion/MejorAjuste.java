@@ -9,11 +9,14 @@ import java.util.ArrayList;
 import segmentacion.Particion;
 
 public class MejorAjuste {
+    
+    
 
     public boolean asignar(Proceso proceso, ArrayList<Particion> particiones) {
-        int tamañoRestante = proceso.getTamañoEnBytes();
+        int tamañoRestante = proceso.getTamañoEnBytes();// cantidad memoria 1000.0.1 100  
         Particion mejorParticion = null;
         for (Particion particion : particiones) {
+             
             if (particion.getEstadoP() == 'L' && particion.getnUnidades() >= tamañoRestante) {
                 if (mejorParticion == null || particion.getnUnidades() < mejorParticion.getnUnidades()) {
                     mejorParticion = particion;

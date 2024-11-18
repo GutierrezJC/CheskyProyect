@@ -71,8 +71,8 @@ public class TablaPaginas {
             }
         }
 
-        if (idMarco < 0 || idMarco >= marcos.size()) {
-            System.out.println("Error: Índice fuera de rango en asignación de marco.");
+        if (idMarco < 0 || idMarco > marcos.size()) {
+            System.out.println("Error: Índice fuera de rango en asignación de marco."+idMarco);
             return;
         }
 

@@ -1,0 +1,39 @@
+Iniciando aplicación Simulador de Planificación de Procesos...
+Archivo creado: C:\memoriavirtual\P1_Pagina1.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina2.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina3.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina4.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina5.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina6.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina7.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina8.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina9.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina10.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina11.txt
+Archivo creado: C:\memoriavirtual\P1_Pagina12.txt
+Página 1 ya está en memoria.
+Página 2 ya está en memoria.
+Página 3 ya está en memoria.
+Página 4 ya está en memoria.
+Página 5 ya está en memoria.
+Página 1 eliminada de la memoria.
+Página 6 cargada desde disco: C:\memoriavirtual\P1_Pagina6.txt
+Asignado Marco 0 a Página ID 6
+Página 2 eliminada de la memoria.
+Página 7 cargada desde disco: C:\memoriavirtual\P1_Pagina7.txt
+Asignado Marco 1 a Página ID 7
+Página 3 eliminada de la memoria.
+Página 8 cargada desde disco: C:\memoriavirtual\P1_Pagina8.txt
+Asignado Marco 2 a Página ID 8
+Página 4 eliminada de la memoria.
+Página 9 cargada desde disco: C:\memoriavirtual\P1_Pagina9.txt
+Asignado Marco 3 a Página ID 9
+Página 5 eliminada de la memoria.
+Página 10 cargada desde disco: C:\memoriavirtual\P1_Pagina10.txt
+Asignado Marco 4 a Página ID 10
+Página 6 eliminada de la memoria.
+Página 11 cargada desde disco: C:\memoriavirtual\P1_Pagina11.txt
+Asignado Marco 0 a Página ID 11
+Página 7 eliminada de la memoria.
+Página 12 cargada desde disco: C:\memoriavirtual\P1_Pagina12.txt
+Asignado Marco 1 a Página ID 12

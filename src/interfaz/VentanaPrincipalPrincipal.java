@@ -145,7 +145,7 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 260, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,10 +196,10 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane2))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -226,18 +226,15 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
                             .addComponent(campoNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoNivelPrioridad)
                             .addComponent(campoMemoria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(24, 24, 24))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))
+                                .addComponent(jLabel6)
+                                .addGap(24, 24, 24))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(16, 16, 16))))))
         );
@@ -301,9 +298,7 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +356,7 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
         Proceso proceso = new Proceso(idProceso, nombres, tamanomemoria, 100, tiempoLlegada, tiempoRafaga, prioridad, 5);
 //       Proceso proceso = new Proceso(idProceso, tiempoLlegada, tiempoRafaga, prioridad);
         procesos.add(proceso);
-        listaProcesosModelo.addElement(proceso.getIdProceso() + " - Llegada: " + tiempoLlegada + ", Ráfaga: " + tiempoRafaga + ", Prioridad: " + prioridad);
+        listaProcesosModelo.addElement(proceso.getIdProceso() + " - Llegada: " + tiempoLlegada + ", Ráfaga: " + tiempoRafaga + ", Prioridad: " + prioridad+ " ,Memoria: "+tamanomemoria);
 
         campoNombre.setText("");
         campoTiempoLlegada.setText("");
@@ -404,6 +399,10 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
             adminitradorProcesos.setPaginacionXsegmentacion(paginacionXsegmentacion);
             adminitradorProcesos.setProcesos(procesos);
             adminitradorProcesos.ejecutaralgoritmo(id);
+            
+            
+            
+            
 
         }).start();
 
@@ -444,6 +443,9 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
             adminitradorProcesos.setIdalgoritmosRemplazo(remplazo);
             adminitradorProcesos.setProcesos(procesos);
             adminitradorProcesos.ejecutaralgoritmo(id);
+            
+            
+            
         }).start();
     }
 

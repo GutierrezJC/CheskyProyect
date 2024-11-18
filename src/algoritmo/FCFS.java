@@ -49,6 +49,7 @@ public class FCFS {
                 OPT opt = new OPT(5, proceso.getTablaPaginas(), futurasReferencias);
 
                 int rafaga = proceso.getTiempoRafaga();
+                
                 if (paginacionXsegmentacion & idalgoritmosRemplazo == 1) {
 
                     for (Pagina pagina : proceso.getTablaPaginas().getPaginas()) { // su arrayList De paginas que esta en su tabla 
@@ -89,7 +90,8 @@ public class FCFS {
                     }
 
                 }
-
+                
+               
                 proceso.setTiempoRestante(0);
                 proceso.setEstado("terminadoo");
 //                   System.out.println(proceso.getIdProceso() + " ha terminado.");

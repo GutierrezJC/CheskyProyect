@@ -4,6 +4,7 @@
  */
 package Objetos;
 
+import AlgoritmosRemplazo.FIFO;
 import java.util.ArrayList;
 
 import java.util.Random;
@@ -22,7 +23,14 @@ public class Proceso {
     private int tiempoRestante;
     private String estado;
     private int prioridad;
+    
+    
+    // solol para guardar
+    FIFO unico ;
 
+    
+    
+    
     ArrayList<Integer> puntosFinales = new ArrayList<>();
     ArrayList<Integer> puntosInicio = new ArrayList<>();
 
@@ -132,6 +140,14 @@ public class Proceso {
 
     public void setPuntosInicio(ArrayList<Integer> puntosInicio) {
         this.puntosInicio = puntosInicio;
+    }
+
+    public FIFO getUnico() {
+        return unico;
+    }
+
+    public void setUnico(FIFO unico) {
+        this.unico = unico;
     }
 
     @Override
