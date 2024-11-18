@@ -167,7 +167,12 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
 
         jLabel7.setText("Algortimos De Remplazo");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MejorAjuste", "PeorAjuste", "PrimerAjuste" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PrimerAjuste", "MejorAjuste", "PeorAjuste" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Algoritmos de Segmentacion ");
 
@@ -344,6 +349,10 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
     private void agregarProceso() {
         int idProceso = Integer.parseInt(campoNombre.getText());
         int tiempoLlegada = Integer.parseInt(campoTiempoLlegada.getText());
@@ -356,7 +365,7 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
         Proceso proceso = new Proceso(idProceso, nombres, tamanomemoria, 100, tiempoLlegada, tiempoRafaga, prioridad, 5);
 //       Proceso proceso = new Proceso(idProceso, tiempoLlegada, tiempoRafaga, prioridad);
         procesos.add(proceso);
-        listaProcesosModelo.addElement(proceso.getIdProceso() + " - Llegada: " + tiempoLlegada + ", Ráfaga: " + tiempoRafaga + ", Prioridad: " + prioridad+ " ,Memoria: "+tamanomemoria);
+        listaProcesosModelo.addElement(proceso.getIdProceso() + " - Llegada: " + tiempoLlegada + ", Ráfaga: " + tiempoRafaga + ", Prioridad: " + prioridad + " ,Memoria: " + tamanomemoria);
 
         campoNombre.setText("");
         campoTiempoLlegada.setText("");
@@ -399,10 +408,6 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
             adminitradorProcesos.setPaginacionXsegmentacion(paginacionXsegmentacion);
             adminitradorProcesos.setProcesos(procesos);
             adminitradorProcesos.ejecutaralgoritmo(id);
-            
-            
-            
-            
 
         }).start();
 
@@ -438,14 +443,19 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
         cargarBarrasDeProgreso();
         new Thread(() -> {
             boolean paginacionXsegmentacion = extraertextoCBUNO();
+
+            if (paginacionXsegmentacion) {
+                int remplazo = extraertextoCBDOS();
+            } else {
+                int remplazo=extraertextoCBTRES();
+            }
+
             int remplazo = extraertextoCBDOS();
             adminitradorProcesos.setPaginacionXsegmentacion(paginacionXsegmentacion);
             adminitradorProcesos.setIdalgoritmosRemplazo(remplazo);
             adminitradorProcesos.setProcesos(procesos);
             adminitradorProcesos.ejecutaralgoritmo(id);
-            
-            
-            
+
         }).start();
     }
 
@@ -490,6 +500,25 @@ public class VentanaPrincipalPrincipal extends javax.swing.JFrame {
             tipoMemoria = 3;
         }
 
+        return tipoMemoria;
+    }
+
+    public int extraertextoCBTRES() {
+        String opcionSeleccionada = (String) jComboBox3.getSelectedItem();
+
+        
+        int tipoMemoria = 10;
+        if ("PrimerAjuste".equals(opcionSeleccionada)) {
+            tipoMemoria = 1;
+        }
+        if ("MejorAjuste".equals(opcionSeleccionada)) {
+            tipoMemoria = 2;
+        }
+
+        if ("PeorAjuste".equals(opcionSeleccionada)) {
+            tipoMemoria = 3;
+        }
+        System.out.println("");
         return tipoMemoria;
     }
 

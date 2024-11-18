@@ -57,9 +57,8 @@ public class AdministradorDeMemoria {
                     algoritmoFCFS.setIdalgoritmosRemplazo(idalgoritmosRemplazo);
                     algoritmoFCFS.ejecutar(procesos);
                 } else {
-                    algoritmoFCFS.setPaginacionXsegmentacion(paginacionXsegmentacion);
-                    algoritmoFCFS.setIdalgoritmosRemplazo(idalgoritmosRemplazo);
-                    algoritmoFCFS.ejecutar(procesos);
+                    // segmentacion 
+                  
                 }
 
                 break;
@@ -71,6 +70,8 @@ public class AdministradorDeMemoria {
                     roundrobin.setIdalgoritmosRemplazo(idalgoritmosRemplazo);
                     roundrobin.ejecutar(procesos);
                 } else {
+                    // segmentacion 
+                    
                     
 
                 }
@@ -84,6 +85,8 @@ public class AdministradorDeMemoria {
                     algoritmoSJF.setIdalgoritmosRemplazo(idalgoritmosRemplazo);
                     algoritmoSJF.ejecutar(procesos);
                 } else {
+                    //segmentacion
+                    
 
                 }
 
@@ -96,6 +99,7 @@ public class AdministradorDeMemoria {
                     algoritmoPrioridad.setIdalgoritmosRemplazo(idalgoritmosRemplazo);
                     algoritmoPrioridad.ejecutar(procesos);
                 } else {
+                    //segmentacion 
 
                 }
 

@@ -95,6 +95,38 @@ public class Prioridad {
                 proceso.setTiempoRestante(0);
 //                System.out.println(proceso.getIdProceso() + " ha terminado.");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
             return null;
         }

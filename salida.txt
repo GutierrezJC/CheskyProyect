@@ -37,3 +37,4 @@ Asignado Marco 0 a Página ID 11
 Página 7 eliminada de la memoria.
 Página 12 cargada desde disco: C:\memoriavirtual\P1_Pagina12.txt
 Asignado Marco 1 a Página ID 12
+Iniciando aplicación Simulador de Planificación de Procesos...

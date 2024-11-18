@@ -353,12 +353,15 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="MejorAjuste"/>
-                <StringItem index="1" value="PeorAjuste"/>
-                <StringItem index="2" value="PrimerAjuste"/>
+                <StringItem index="0" value="PrimerAjuste"/>
+                <StringItem index="1" value="MejorAjuste"/>
+                <StringItem index="2" value="PeorAjuste"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
